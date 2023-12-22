@@ -28,6 +28,7 @@ UFlowAsset::UFlowAsset(const FObjectInitializer& ObjectInitializer)
 #endif
 	, AllowedNodeClasses({UFlowNode::StaticClass()})
 	, AllowedInSubgraphNodeClasses({UFlowNode_SubGraph::StaticClass()})
+	, StartNodeClass(UFlowNode_Start::StaticClass())
 	, bStartNodePlacedAsGhostNode(false)
 	, TemplateAsset(nullptr)
 	, FinishPolicy(EFlowFinishPolicy::Keep)

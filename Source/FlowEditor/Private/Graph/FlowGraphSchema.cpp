@@ -79,7 +79,7 @@ void UFlowGraphSchema::CreateDefaultNodesForGraph(UEdGraph& Graph) const
 	FVector2D NodeOffset = FVector2D::ZeroVector;
 
 	// Start node
-	CreateDefaultNode(Graph, AssetClassDefaults, UFlowNode_Start::StaticClass(), NodeOffset, AssetClassDefaults->bStartNodePlacedAsGhostNode);
+	CreateDefaultNode(Graph, AssetClassDefaults, AssetClassDefaults->StartNodeClass, NodeOffset, AssetClassDefaults->bStartNodePlacedAsGhostNode);
 
 	// Add default nodes for all of the CustomInputs
 	if (IsValid(AssetClassDefaults))

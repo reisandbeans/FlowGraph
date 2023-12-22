@@ -12,6 +12,7 @@
 
 class UFlowNode_CustomInput;
 class UFlowNode_SubGraph;
+class UFlowNode_Start;
 class UFlowSubsystem;
 
 class UEdGraph;
@@ -50,6 +51,7 @@ class FLOW_API UFlowAsset : public UObject
 	friend class FFlowAssetDetails;
 	friend class FFlowNode_SubGraphDetails;
 	friend class UFlowGraphSchema;
+	friend class UFlowImportUtils;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Flow Asset")
 	FGuid AssetGuid;
@@ -107,6 +109,8 @@ protected:
 
 	TArray<TSubclassOf<UFlowNode>> AllowedInSubgraphNodeClasses;
 	TArray<TSubclassOf<UFlowNode>> DeniedInSubgraphNodeClasses;
+
+	TSubclassOf<UFlowNode_Start> StartNodeClass;
 	
 	bool bStartNodePlacedAsGhostNode;
 
