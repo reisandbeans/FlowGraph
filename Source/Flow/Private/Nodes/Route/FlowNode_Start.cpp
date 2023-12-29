@@ -15,6 +15,11 @@ UFlowNode_Start::UFlowNode_Start(const FObjectInitializer& ObjectInitializer)
 	AllowedSignalModes = {EFlowSignalMode::Enabled, EFlowSignalMode::Disabled};
 }
 
+void UFlowNode_Start::Execute()
+{
+	TriggerFirstOutput(true);
+}
+
 void UFlowNode_Start::ExecuteInput(const FName& PinName)
 {
 	TriggerFirstOutput(true);

@@ -16,5 +16,7 @@ class FLOW_API UFlowNode_Start : public UFlowNode
 	friend class UFlowAsset;
 
 protected:
+	virtual void Execute();
+	
 	virtual void ExecuteInput(const FName& PinName) override;
 };

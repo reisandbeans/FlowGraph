@@ -162,7 +162,7 @@ public:
 	}
 
 	UFUNCTION(BlueprintPure, Category = "FlowAsset")
-	virtual UFlowNode* GetDefaultEntryNode() const;
+	virtual UFlowNode_Start* GetDefaultEntryNode() const;
 
 #if WITH_EDITOR
 protected:

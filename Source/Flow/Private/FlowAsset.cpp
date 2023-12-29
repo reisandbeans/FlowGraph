@@ -272,9 +272,9 @@ void UFlowAsset::HarvestNodeConnections()
 }
 #endif
 
-UFlowNode* UFlowAsset::GetDefaultEntryNode() const
+UFlowNode_Start* UFlowAsset::GetDefaultEntryNode() const
 {
-	UFlowNode* FirstStartNode = nullptr;
+	UFlowNode_Start* FirstStartNode = nullptr;
 
 	for (const TPair<FGuid, UFlowNode*>& Node : Nodes)
 	{
@@ -284,7 +284,7 @@ UFlowNode* UFlowAsset::GetDefaultEntryNode() const
 			{
 				return StartNode;
 			}
-			else if (FirstStartNode == nullptr)
+			if (FirstStartNode == nullptr)
 			{
 				FirstStartNode = StartNode;
 			}
@@ -506,10 +506,10 @@ void UFlowAsset::StartFlow()
 {
 	PreStartFlow();
 
-	if (UFlowNode* ConnectedEntryNode = GetDefaultEntryNode())
+	if (UFlowNode_Start* ConnectedEntryNode = GetDefaultEntryNode())
 	{
 		RecordedNodes.Add(ConnectedEntryNode);
-		ConnectedEntryNode->TriggerFirstOutput(true);
+		ConnectedEntryNode->Execute();
 	}
 }
 
