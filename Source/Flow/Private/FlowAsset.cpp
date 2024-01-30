@@ -403,7 +403,25 @@ void UFlowAsset::GetInstanceDisplayNames(TArray<TSharedPtr<FName>>& OutDisplayNa
 {
 	for (const UFlowAsset* Instance : ActiveInstances)
 	{
-		OutDisplayNames.Emplace(MakeShareable(new FName(Instance->GetDisplayName())));
+		FString Name;
+
+		if (const UWorld* World = Instance->GetFlowSubsystem()->GetWorld())
+		{
+			if (World->IsNetMode(NM_Client))
+			{
+				Name = Instance->GetDisplayName().ToString() + " (Client)";
+			}
+			else
+			{
+				Name = Instance->GetDisplayName().ToString() + " (Server)";
+			}
+		}
+		else
+		{
+			Name = Instance->GetDisplayName().ToString();			
+		}
+		
+		OutDisplayNames.Emplace(MakeShareable(new FName(Name)));
 	}
 }
 
